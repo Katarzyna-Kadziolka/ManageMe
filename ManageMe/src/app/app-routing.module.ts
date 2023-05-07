@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
+  {path: '', redirectTo:'projects', pathMatch:'full'},
   {path: 'login', component: LoginComponent},
   {path: 'forgetPassword', component: ForgetPasswordComponent},
   {path: 'register', component: RegisterComponent},
