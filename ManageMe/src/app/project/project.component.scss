@@ -1,0 +1,19 @@
+:host {
+    border: 3px solid #F2CD4E ;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0px 17px 29px -10px rgba(180, 181, 192, 1);
+}
+
+.project-name {
+    font-size: 1.5rem;
+}
+
+.project-description {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}

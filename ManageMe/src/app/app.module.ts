@@ -13,6 +13,8 @@ import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { FeatureComponent } from './feature/feature.component';
+import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     UsersComponent,
     UserComponent,
     NotFoundComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    FeatureComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,6 @@ export class ProjectComponent {
       projectId =  data['id']
     })
     this.project = this.projectsService.GetProjectDetails(projectId);
-    console.log("🚀 ~ file: project.component.ts:28 ~ ProjectComponent ~ ngOnInit ~ project:", this.project)
-
   }
 
 }

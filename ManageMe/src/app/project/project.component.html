@@ -1,1 +1,5 @@
-<span>works</span>
+<span class="project-name">{{ project.name }}</span>
+<span class="project-description">{{ project.description }}</span>
+<hr>
+<app-feature *ngFor="let feature of project.features" [feature]="feature" />
+
