@@ -8,7 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class ProjectCardComponent {
   @Input () project: Project = {
+    id: '',
     name: '',
     description: ''
+  }
+
+  onProjectCardClick() {
+    
   }
 }

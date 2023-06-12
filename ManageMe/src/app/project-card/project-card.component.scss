@@ -1,10 +1,11 @@
-:host {
+.project-card-container {
     border: 3px solid #F2CD4E ;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     width: 200px;
+    height: 200px;
     box-shadow: 0px 17px 29px -10px rgba(180, 181, 192, 1);
 }
 
