@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Project } from './../../models/project';
 import { Component, Input } from '@angular/core';
 
@@ -13,7 +14,9 @@ export class ProjectCardComponent {
     description: ''
   }
 
-  onProjectCardClick() {
-    
+  constructor(private readonly router: Router) {}
+
+  protected onProjectCardClick() {
+    this.router.navigate([`/project/${this.project.id}`])
   }
 }
