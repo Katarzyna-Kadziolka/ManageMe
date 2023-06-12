@@ -1,3 +1,6 @@
+import { Priority } from "./priority"
+import { Status } from "./status"
+
 export type FeatureTask = {
     name: string,
     description: string,

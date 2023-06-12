@@ -1,5 +1,7 @@
 import { FeatureTask } from './../models/feature-task';
 import { Injectable } from "@angular/core";
+import { Status } from "./../models/status";
+import { Priority } from "./../models/priority";
 
 @Injectable()
 export class FeatureTasksService {
