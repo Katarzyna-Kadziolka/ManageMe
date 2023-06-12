@@ -1,3 +1,4 @@
+import { FeatureTask } from './feature-task';
 export type Feature = {
     id: string,
     name: string,
@@ -5,5 +6,6 @@ export type Feature = {
     priority: Priority, 
     projectId: string,
     owner: string,
-    status: Status
+    status: Status,
+    tasks: Array<FeatureTask>
 }

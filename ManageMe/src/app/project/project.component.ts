@@ -1,7 +1,7 @@
+import { ProjectsService } from './../../services/projects-service';
+import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
-import { Project } from './../../models/project';
 import { Component } from '@angular/core';
-import { ProjectsService } from 'src/services/projects-service';
 
 @Component({
   selector: 'app-project',
@@ -10,10 +10,11 @@ import { ProjectsService } from 'src/services/projects-service';
   providers: [ProjectsService]
 })
 export class ProjectComponent {
-  project: Project = {
+  project: ProjectDetails = {
     id: '',
     name: '',
-    description: ''
+    description: '',
+    features: []
   }
 
   constructor(private readonly route: ActivatedRoute, private projectsService: ProjectsService) {}
@@ -23,7 +24,9 @@ export class ProjectComponent {
     this.route.params.subscribe(data => {
       projectId =  data['id']
     })
-    this.project = this.projectsService.GetProject(projectId);
+    this.project = this.projectsService.GetProjectDetails(projectId);
+    console.log("🚀 ~ file: project.component.ts:28 ~ ProjectComponent ~ ngOnInit ~ project:", this.project)
+
   }
 
 }

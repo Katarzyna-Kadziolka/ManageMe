@@ -1,3 +1,5 @@
+import { FeaturesService } from './features-service';
+import { ProjectDetails } from './../models/project-details';
 import { Injectable } from '@angular/core';
 import { Project } from './../models/project';
 
@@ -34,5 +36,25 @@ export class ProjectsService {
         const project = this.projects.find((a) => a.id === id);
         if(project === undefined) throw Error;
         return project;
+    }
+
+    GetProjectDetails(id: string) : ProjectDetails {
+        const projectDetails : ProjectDetails = {
+            id: '',
+            name: '',
+            description: '',
+            features: []
+        };
+        const featureService = new FeaturesService();
+
+        this.projects.forEach(project => {
+            const features = featureService.GetFeaturesForProject(project.id);
+            projectDetails.id = project.id;
+            projectDetails.name = project.name;
+            projectDetails.description = project.description;
+            projectDetails.features = features;
+        });
+
+        return projectDetails;
     }
 }

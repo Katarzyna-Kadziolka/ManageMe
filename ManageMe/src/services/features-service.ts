@@ -1,11 +1,15 @@
+import { FeatureTasksService } from './feature-tasks-service';
 import { Feature } from './../models/feature';
 import { Injectable } from "@angular/core";
+import { Status } from "./../models/status";
+import { Priority } from "./../models/priority";
 
 @Injectable()
 export class FeaturesService {
     features: Array<Feature> = [];
 
     constructor() {
+        const tasksServices = new FeatureTasksService();
         this.features = [
             {
                 id: "10ec918f-60fd-404f-8d0b-82be46e71eb9",
@@ -14,7 +18,8 @@ export class FeaturesService {
                 priority: Priority.Must,
                 projectId: "f9614e22-0418-4acf-90ad-af73e715f87e",
                 status: Status.Done,
-                owner: "Mavis Smith"
+                owner: "Mavis Smith",
+                tasks: []
             },
             {
                 id: "4d29249f-8af3-4828-ae25-5f6efe0ad6bb",
@@ -23,7 +28,8 @@ export class FeaturesService {
                 priority: Priority.Could,
                 projectId: "f9614e22-0418-4acf-90ad-af73e715f87e",
                 status: Status.Doing,
-                owner: "Mavis Smith"
+                owner: "Mavis Smith",
+                tasks: []
             },
             {
                 id: "1f6f6f89-92b3-4d65-b468-fc3405bcd4bc",
@@ -32,7 +38,8 @@ export class FeaturesService {
                 priority: Priority.Should,
                 projectId: "f9614e22-0418-4acf-90ad-af73e715f87e",
                 status: Status.Todo,
-                owner: "Mavis Smith"
+                owner: "Mavis Smith",
+                tasks: []
             },
             {
                 id: "fd7260a0-21d3-4e4d-97b0-afdc29252a8d",
@@ -41,7 +48,8 @@ export class FeaturesService {
                 priority: Priority.Must,
                 projectId: "44df5e72-a809-46cd-ab0a-3c4d17557f4c",
                 status: Status.Done,
-                owner: "Lainey Jones"
+                owner: "Lainey Jones",
+                tasks: []
             },
             {
                 id: "8631fe7a-fc7f-4543-bee3-dcc011d4e29c",
@@ -50,7 +58,8 @@ export class FeaturesService {
                 priority: Priority.Should,
                 projectId: "44df5e72-a809-46cd-ab0a-3c4d17557f4c",
                 status: Status.Done,
-                owner: "Lainey Jones"
+                owner: "Lainey Jones",
+                tasks: []
             },
             {
                 id: "38d55b89-0e43-472b-b209-a20c6206404d",
@@ -59,7 +68,8 @@ export class FeaturesService {
                 priority: Priority.Could,
                 projectId: "44df5e72-a809-46cd-ab0a-3c4d17557f4c",
                 status: Status.Todo,
-                owner: "Lainey Jones"
+                owner: "Lainey Jones",
+                tasks: []
             },
             {
                 id: "b677b8b8-f492-4821-a10e-ca36363262cc",
@@ -68,7 +78,8 @@ export class FeaturesService {
                 priority: Priority.Must,
                 projectId: "821c185a-99cc-4d57-ad3b-a78bb46a3406",
                 status: Status.Done,
-                owner: "Myla Williams"
+                owner: "Myla Williams",
+                tasks: []
             },
             {
                 id: "faa895cc-80db-4e5e-b297-d846ab34ed2f",
@@ -77,7 +88,8 @@ export class FeaturesService {
                 priority: Priority.Should,
                 projectId: "821c185a-99cc-4d57-ad3b-a78bb46a3406",
                 status: Status.Doing,
-                owner: "Myla Williams"
+                owner: "Myla Williams",
+                tasks: []
             },
             {
                 id: "10cb053b-94ba-491d-b831-af8826e3178b",
@@ -86,9 +98,13 @@ export class FeaturesService {
                 priority: Priority.Could,
                 projectId: "821c185a-99cc-4d57-ad3b-a78bb46a3406",
                 status: Status.Done,
-                owner: "Myla Williams"
+                owner: "Myla Williams",
+                tasks: []
             },
         ]
+        this.features.forEach(feature => {
+            feature.tasks = tasksServices.tasks.filter((a) => a.featureId === feature.id);
+        });
     }
 
     GetFeaturesForProject(projectId: string) : Array<Feature> {
