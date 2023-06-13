@@ -1,0 +1,26 @@
+.task-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+}
+
+.dates {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+}
+
+.date-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user {
+    align-self: end;
+}
+
+.description {
+    padding: 1rem;
+}

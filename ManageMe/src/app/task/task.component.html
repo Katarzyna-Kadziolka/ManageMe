@@ -1,3 +1,24 @@
 <app-openable-card [title]="task.name" [status]="task.status" [priority]="task.priority" [borderColor]="this.borderColor" >
     <hr>
+    <div class="task-data">
+        <div class="user">
+            <span><b>{{user.name}} {{user.lastName}}</b></span>
+        </div>
+        <div class="dates">
+            <div class="date-column">
+               <span><b>Addition date:</b></span>
+               <span><b>Start date:</b></span>
+               <span><b>End date:</b></span>
+            </div>
+            <div class="date-column">
+               <span>{{toDate(task.addDate)}}</span> 
+                <span>{{toDate(task.startDate)}}</span>
+                <span>{{toDate(task.endDate)}}</span> 
+             </div>
+        </div>
+    </div>
+    <div class="description">
+       <span>{{task.description}}</span> 
+    </div>
+    
 </app-openable-card>

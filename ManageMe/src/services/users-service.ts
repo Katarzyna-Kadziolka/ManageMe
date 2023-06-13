@@ -1,3 +1,4 @@
+import { Permishion } from 'src/models/permishion';
 import { User } from './../models/user';
 import { Injectable } from "@angular/core";
 
