@@ -1,4 +1,4 @@
-<app-openable-card [feature]="feature" [borderColor]="this.borderColor">
+<app-openable-card [title]="feature.name" [status]="feature.status" [priority]="feature.priority" [borderColor]="this.borderColor">
     <hr>
 
     <div class="owner-container">
@@ -6,9 +6,11 @@
         <span><b>{{feature.owner}}</b></span>
     </div>
 
-    <span>{{feature.description}}</span>
+    <div class="description">
+        <span >{{feature.description}}</span>
+    </div>
 
-    <app-task *ngFor="let task of this.feature.tasks" [task]="task" /> 
+    <app-task *ngFor="let task of this.feature.tasks" [task]="task" class="task" /> 
 </app-openable-card>
 
 

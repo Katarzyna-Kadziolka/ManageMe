@@ -1,8 +1,8 @@
 <div class="title-bar">
-    <span class="title">{{feature.name}}</span>
+    <span class="title">{{title}}</span>
     <div class="title-info">
-        <app-tag>{{feature.status}}</app-tag>
-        <app-tag>{{feature.priority}}</app-tag>
+        <app-tag>{{status}}</app-tag>
+        <app-tag>{{priority}}</app-tag>
         <div class="icon-container">
             <fa-icon [icon]="faAngleDown" *ngIf="!isOpen" (click)="onArrowClick()" class="icon"></fa-icon>
             <fa-icon [icon]="faAngleUp" *ngIf="isOpen" (click)="onArrowClick()" class="icon"></fa-icon>

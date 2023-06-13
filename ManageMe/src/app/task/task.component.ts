@@ -1,3 +1,4 @@
+import { BorderColor } from './../../models/border-color';
 import { Priority } from 'src/models/priority';
 import { FeatureTask } from './../../models/feature-task';
 import { Component, Input } from '@angular/core';
@@ -21,4 +22,6 @@ export class TaskComponent {
     status: Status.Todo,
     userId: ""
   }
+
+  borderColor = BorderColor.Grey;
 }
