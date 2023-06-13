@@ -2,6 +2,7 @@ import { Priority } from 'src/models/priority';
 import { Feature } from './../../models/feature';
 import { Component, Input } from '@angular/core';
 import { Status } from 'src/models/status';
+import { BorderColor } from 'src/models/border-color';
 
 @Component({
   selector: 'app-feature',
@@ -19,4 +20,6 @@ export class FeatureComponent {
     status: Status.Todo,
     tasks: []
   }
+
+  borderColor = BorderColor.Orange;
 }

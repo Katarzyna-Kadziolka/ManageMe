@@ -15,6 +15,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { FeatureComponent } from './feature/feature.component';
 import { TaskComponent } from './task/task.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TagComponent } from './tag/tag.component';
+import { OpenableCardComponent } from './openable-card/openable-card.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,14 @@ import { TaskComponent } from './task/task.component';
     NotFoundComponent,
     ProjectCardComponent,
     FeatureComponent,
-    TaskComponent
+    TaskComponent,
+    TagComponent,
+    OpenableCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

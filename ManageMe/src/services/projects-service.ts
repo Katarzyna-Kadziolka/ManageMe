@@ -46,14 +46,12 @@ export class ProjectsService {
             features: []
         };
         const featureService = new FeaturesService();
-
-        this.projects.forEach(project => {
-            const features = featureService.GetFeaturesForProject(project.id);
-            projectDetails.id = project.id;
-            projectDetails.name = project.name;
-            projectDetails.description = project.description;
-            projectDetails.features = features;
-        });
+        const projectToMap = this.projects.find((a) => a.id === id);
+        if(projectToMap === undefined) throw Error;
+        projectDetails.id = projectToMap.id;
+        projectDetails.name = projectToMap.name;
+        projectDetails.description = projectToMap.description;
+        projectDetails.features = featureService.GetFeaturesForProject(projectDetails.id);
 
         return projectDetails;
     }

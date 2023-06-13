@@ -1,2 +1,14 @@
-<span>{{feature.name}}</span>
-<app-task *ngFor="let task of this.feature.tasks" [task]="task" />
+<app-openable-card [feature]="feature" [borderColor]="this.borderColor">
+    <hr>
+
+    <div class="owner-container">
+        <span>Owner:</span>
+        <span><b>{{feature.owner}}</b></span>
+    </div>
+
+    <span>{{feature.description}}</span>
+
+    <app-task *ngFor="let task of this.feature.tasks" [task]="task" /> 
+</app-openable-card>
+
+

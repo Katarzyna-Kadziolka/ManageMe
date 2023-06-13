@@ -23,8 +23,9 @@ export class ProjectComponent {
     let projectId = "";
     this.route.params.subscribe(data => {
       projectId =  data['id']
+      this.project = this.projectsService.GetProjectDetails(projectId);
     })
-    this.project = this.projectsService.GetProjectDetails(projectId);
+    
   }
 
 }

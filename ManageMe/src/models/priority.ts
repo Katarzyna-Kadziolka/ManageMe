@@ -1,5 +1,5 @@
 export enum Priority {
-    Must,
-    Should, 
-    Could
+    Must = "Must",
+    Should = "Should", 
+    Could = "Could"
 }

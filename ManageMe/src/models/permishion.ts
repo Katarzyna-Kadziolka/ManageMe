@@ -1,5 +1,5 @@
-enum Permishion {
-    Admin,
-    Devops,
-    Developer
+export enum Permishion {
+    Admin = "Admin",
+    Devops = "Devops",
+    Developer = "Developer"
 }
