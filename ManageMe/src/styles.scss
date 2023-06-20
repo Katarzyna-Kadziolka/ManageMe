@@ -14,3 +14,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+button {
+    font-family: 'Calibri';
+    font-weight: bold;
+    color: #404240;
+    min-width: 4rem;
+    min-height: 2rem;
+    border: 3px solid #EE9802;
+    border-radius: 25px;
+    background-color: #F2CD4E;
+    cursor: pointer;
+}

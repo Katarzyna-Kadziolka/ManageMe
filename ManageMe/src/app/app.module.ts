@@ -18,6 +18,7 @@ import { TaskComponent } from './task/task.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TagComponent } from './tag/tag.component';
 import { OpenableCardComponent } from './openable-card/openable-card.component';
+import { ManagementButtonsComponent } from './management-buttons/management-buttons.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { OpenableCardComponent } from './openable-card/openable-card.component';
     FeatureComponent,
     TaskComponent,
     TagComponent,
-    OpenableCardComponent
+    OpenableCardComponent,
+    ManagementButtonsComponent
   ],
   imports: [
     BrowserModule,
