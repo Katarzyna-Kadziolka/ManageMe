@@ -1,3 +1,4 @@
+import { Observable, of, startWith } from 'rxjs';
 import { FeaturesService } from './features-service';
 import { ProjectDetails } from './../models/project-details';
 import { Injectable } from '@angular/core';
@@ -38,7 +39,7 @@ export class ProjectsService {
         return project;
     }
 
-    GetProjectDetails(id: string) : ProjectDetails {
+    GetProjectDetails(id: string) : Observable<ProjectDetails>  {
         const projectDetails : ProjectDetails = {
             id: '',
             name: '',
@@ -53,6 +54,6 @@ export class ProjectsService {
         projectDetails.description = projectToMap.description;
         projectDetails.features = featureService.GetFeaturesForProject(projectDetails.id);
 
-        return projectDetails;
+        return of(projectDetails).pipe(startWith(projectDetails)); ;
     }
 }

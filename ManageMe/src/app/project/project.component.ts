@@ -2,6 +2,7 @@ import { ProjectsService } from './../../services/projects-service';
 import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
+import { Observable, of, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-project',
@@ -23,7 +24,9 @@ export class ProjectComponent {
     let projectId = "";
     this.route.params.subscribe(data => {
       projectId =  data['id']
-      this.project = this.projectsService.GetProjectDetails(projectId);
+      this.projectsService.GetProjectDetails(projectId).subscribe(
+        project => this.project = project
+      )
     })
     
   }

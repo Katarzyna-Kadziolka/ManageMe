@@ -1,3 +1,4 @@
+import { FeatureTasksService } from './../../services/feature-tasks-service';
 import { User } from './../../models/user';
 import { UsersService } from './../../services/users-service';
 import { BorderColor } from './../../models/border-color';
@@ -11,7 +12,7 @@ import { Permishion } from 'src/models/permishion';
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
-  providers: [UsersService]
+  providers: [UsersService, FeatureTasksService]
 })
 export class TaskComponent {
   @Input () task: FeatureTask = {
@@ -27,7 +28,7 @@ export class TaskComponent {
     userId: ""
   }
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private featureTasksService: FeatureTasksService) {}
 
   borderColor = BorderColor.Grey;
   user : User = {
@@ -50,6 +51,10 @@ export class TaskComponent {
 
   toDate(time: Date) : string {
     return `${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`;
+  }
+
+  onDelete() {
+    this.featureTasksService.removeTask(this.task.name);
   }
 
 }

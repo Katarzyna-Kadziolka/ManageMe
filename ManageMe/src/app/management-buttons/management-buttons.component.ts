@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-management-buttons',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./management-buttons.component.scss']
 })
 export class ManagementButtonsComponent {
-
+  @Output() delete = new EventEmitter();
+  onDelete(event: any) {
+    this.delete.emit(event);
+  }
 }

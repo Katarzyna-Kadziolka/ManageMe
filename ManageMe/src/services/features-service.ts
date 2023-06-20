@@ -3,10 +3,12 @@ import { Feature } from './../models/feature';
 import { Injectable } from "@angular/core";
 import { Status } from "./../models/status";
 import { Priority } from "./../models/priority";
+import { of, startWith, Observable, filter, map } from 'rxjs';
 
 @Injectable()
 export class FeaturesService {
     features: Array<Feature> = [];
+    //observableFeature: Observable<Array<Feature>>;
 
     constructor() {
         const tasksServices = new FeatureTasksService();
@@ -103,12 +105,20 @@ export class FeaturesService {
             },
         ]
         this.features.forEach(feature => {
-            feature.tasks = tasksServices.tasks.filter((a) => a.featureId === feature.id);
+            // tasksServices.getTasksForFeature(feature.id).subscribe(
+            //     tasks => feature.tasks = tasks
+            // )
+            feature.tasks = tasksServices.getTasksForFeature(feature.id);
         });
+        // this.observableFeature = of(this.features).pipe(
+        //     startWith(this.features)
+        // )
     }
 
     GetFeaturesForProject(projectId: string) : Array<Feature> {
-        const features = this.features.filter((a) => a.projectId === projectId );
-        return features;
+        return this.features.filter(feature => feature.projectId === projectId);
+        // return this.observableFeature.pipe(
+        //     map(features => features.filter(feature => feature.projectId === projectId))
+        // )
     }
 }

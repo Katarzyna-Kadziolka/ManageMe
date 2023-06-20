@@ -2,10 +2,12 @@ import { FeatureTask } from './../models/feature-task';
 import { Injectable } from "@angular/core";
 import { Status } from "./../models/status";
 import { Priority } from "./../models/priority";
+import { of, startWith, Observable, filter, mergeMap, map } from 'rxjs';
 
 @Injectable()
 export class FeatureTasksService {
     tasks: Array<FeatureTask> = [];
+    //observableTasks: Observable<Array<FeatureTask>>;
 
     constructor() {
         this.tasks = [
@@ -225,11 +227,21 @@ export class FeatureTasksService {
                 startDate: new Date("2023-06-15"),
                 userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
-        ]
+        ];
+        //this.observableTasks = of(this.tasks).pipe(startWith(this.tasks));
     }
 
     getTasksForFeature(featureId: string) : Array<FeatureTask> {
-        const tasks = this.tasks.filter((a) => a.featureId === featureId);
-        return tasks;
+        // return this.observableTasks.pipe(
+        //     map(tasks => tasks.filter(task => task.featureId === featureId))
+        //   );
+        return this.tasks.filter(task => task.featureId === featureId);
+    }
+
+    removeTask(taskName: string) {
+        const index = this.tasks.findIndex((a) => a.name === taskName);
+        if(index > -1) {
+            this.tasks.splice(index, 1);
+        }
     }
 }
