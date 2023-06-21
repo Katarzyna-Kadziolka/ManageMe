@@ -1,0 +1,10 @@
+:host {
+    width: 200px;
+    display: flex;
+    justify-content: end;
+    column-gap: 0.5rem;
+}
+
+app-tag {
+    cursor: pointer;
+}

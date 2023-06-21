@@ -19,6 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TagComponent } from './tag/tag.component';
 import { OpenableCardComponent } from './openable-card/openable-card.component';
 import { ManagementButtonsComponent } from './management-buttons/management-buttons.component';
+import { FeatureFormComponent } from './feature-form/feature-form.component';
+import { TagsManagementComponent } from './tags-management/tags-management.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ManagementButtonsComponent } from './management-buttons/management-butt
     TaskComponent,
     TagComponent,
     OpenableCardComponent,
-    ManagementButtonsComponent
+    ManagementButtonsComponent,
+    FeatureFormComponent,
+    TagsManagementComponent
   ],
   imports: [
     BrowserModule,
