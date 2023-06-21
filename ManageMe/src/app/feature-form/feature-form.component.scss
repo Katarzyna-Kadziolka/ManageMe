@@ -39,3 +39,12 @@ hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.save-button-container {
+    display: flex;
+    justify-content: end;
+}
+
+.save-button {
+    width: 150px;
+}

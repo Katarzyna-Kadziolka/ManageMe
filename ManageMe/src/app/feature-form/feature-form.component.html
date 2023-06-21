@@ -1,17 +1,21 @@
-<div class="title-bar">
-    <input placeholder="Feature name">
+<div [formGroup]="changedFeature" class="title-bar">
+    <input formControlName="name" placeholder="Feature name">
     <div class="title-info">
-        <app-tags-management />
+        <app-tags-management (priorityChanged)="priorityChanged($event)" (statusChanged)="statusChanged($event)" />
     </div>    
 </div>
 
 <hr>
 
-<div class="owner-container">
-    <input placeholder="Owner">
+<div [formGroup]="changedFeature" class="owner-container">
+    <input formControlName="owner" placeholder="Owner">
 </div>
 
-<div class="description">
-    <textarea placeholder="Description" class="description-area"></textarea>
+<div [formGroup]="changedFeature" class="description">
+    <textarea formControlName="description" placeholder="Description" class="description-area"></textarea>
+</div>
+
+<div class="save-button-container">
+   <button class="save-button" (click)="onSave()">Save</button> 
 </div>
 

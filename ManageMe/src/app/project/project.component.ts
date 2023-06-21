@@ -2,7 +2,6 @@ import { ProjectsService } from './../../services/projects-service';
 import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
-import { Observable, of, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-project',

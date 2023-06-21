@@ -133,4 +133,15 @@ export class FeaturesService {
         }
         
     }
+
+    AddOrUpdateFeature(feature: Feature) {
+        if(feature.id === "") {
+            feature.id = crypto.randomUUID();
+            this.features.push(feature);
+            console.log("🚀 ~ file: features-service.ts:141 ~ FeaturesService ~ AddOrUpdateFeature ~ features:", this.features)
+            return;
+        }
+        this.DeleteFeature(feature.id)
+        this.features.push(feature);
+    }
 }

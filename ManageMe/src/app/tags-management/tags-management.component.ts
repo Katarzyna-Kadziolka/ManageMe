@@ -1,6 +1,6 @@
 import { Priority } from './../../models/priority';
 import { Status } from './../../models/status';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tags-management',
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./tags-management.component.scss']
 })
 export class TagsManagementComponent {
+  @Output () statusChanged = new EventEmitter();
   statusList = [
     Status.Todo,
     Status.Doing,
@@ -16,6 +17,7 @@ export class TagsManagementComponent {
   statusIndex = 0;
   status = this.statusList[this.statusIndex];
 
+  @Output () priorityChanged = new EventEmitter();
   priorityList = [
     Priority.Must,
     Priority.Could,
@@ -32,6 +34,7 @@ export class TagsManagementComponent {
       this.statusIndex ++;
     }
     this.status = this.statusList[this.statusIndex];
+    this.statusChanged.emit(this.status);
   }
 
   changePriority() {
@@ -42,5 +45,6 @@ export class TagsManagementComponent {
       this.priorityIndex ++;
     }
     this.priority = this.priorityList[this.priorityIndex];
+    this.priorityChanged.emit(this.priority);
   }
 }
