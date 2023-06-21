@@ -1,4 +1,4 @@
-import { Observable, of, startWith } from 'rxjs';
+import { BehaviorSubject, Observable, of, startWith } from 'rxjs';
 import { FeaturesService } from './features-service';
 import { ProjectDetails } from './../models/project-details';
 import { Injectable } from '@angular/core';
@@ -7,7 +7,8 @@ import { Project } from './../models/project';
 @Injectable()
 export class ProjectsService {
     projects: Array<Project> = [];
-
+    private projectsSubject: BehaviorSubject<Array<Project>> = new BehaviorSubject<Array<Project>>([]);
+    projectsObservable: Observable<Array<Project>> = this.projectsSubject.asObservable();
 
     constructor() {
         this.projects = [
@@ -27,33 +28,17 @@ export class ProjectsService {
                 description: "Calculator of wire parameters to simplify choosing the right material for chainmaille jewelry."
             }
         ]
+
+        this.projectsSubject.next(this.projects);
     }
 
     GetProjects() : Array<Project> {
         return this.projects;
     }
 
-    GetProject(id: string) : Project {
+    GetProject(id: string): Observable<Project> {
         const project = this.projects.find((a) => a.id === id);
-        if(project === undefined) throw Error;
-        return project;
-    }
-
-    GetProjectDetails(id: string) : Observable<ProjectDetails>  {
-        const projectDetails : ProjectDetails = {
-            id: '',
-            name: '',
-            description: '',
-            features: []
-        };
-        const featureService = new FeaturesService();
-        const projectToMap = this.projects.find((a) => a.id === id);
-        if(projectToMap === undefined) throw Error;
-        projectDetails.id = projectToMap.id;
-        projectDetails.name = projectToMap.name;
-        projectDetails.description = projectToMap.description;
-        projectDetails.features = featureService.GetFeaturesForProject(projectDetails.id);
-
-        return of(projectDetails).pipe(startWith(projectDetails)); ;
-    }
+        if (project === undefined) throw new Error('Project not found');
+        return of(project);
+      }
 }

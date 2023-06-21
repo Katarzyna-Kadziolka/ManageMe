@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-feature-form',
   templateUrl: './feature-form.component.html',
   styleUrls: ['./feature-form.component.scss'],
-  providers: [FeaturesService]
 })
 export class FeatureFormComponent implements OnInit {
   @Input () feature: Feature = {
@@ -48,7 +47,6 @@ export class FeatureFormComponent implements OnInit {
       priority: this.feature.priority,
       status: this.feature.status
     }
-    console.log("🚀 ~ file: feature-form.component.ts:51 ~ FeatureFormComponent ~ onSave ~ feature:", feature)
 
     this.featureService.AddOrUpdateFeature(feature);
   }

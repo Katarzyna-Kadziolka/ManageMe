@@ -3,13 +3,17 @@ import { Feature } from './../models/feature';
 import { Injectable } from "@angular/core";
 import { Status } from "./../models/status";
 import { Priority } from "./../models/priority";
-import { of, startWith, Observable, filter, map } from 'rxjs';
+import { of, startWith, Observable, filter, map, BehaviorSubject, Subject, ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class FeaturesService {
-    features: Array<Feature> = [];
+    private features: Array<Feature> = [];
+    private featureSubject: ReplaySubject<Array<Feature>>
+    featuresObservable: Observable<Array<Feature>>
+
     tasksServices = new FeatureTasksService();
-    //observableFeature: Observable<Array<Feature>>;
 
     constructor() {
         this.features = [
@@ -105,21 +109,17 @@ export class FeaturesService {
             },
         ]
         this.features.forEach(feature => {
-            // tasksServices.getTasksForFeature(feature.id).subscribe(
-            //     tasks => feature.tasks = tasks
-            // )
             feature.tasks = this.tasksServices.getTasksForFeature(feature.id);
         });
-        // this.observableFeature = of(this.features).pipe(
-        //     startWith(this.features)
-        // )
+        this.featureSubject = new ReplaySubject<Array<Feature>>();
+        this.featureSubject.next(this.features);
+        this.featuresObservable = this.featureSubject;
     }
 
-    GetFeaturesForProject(projectId: string) : Array<Feature> {
-        return this.features.filter(feature => feature.projectId === projectId);
-        // return this.observableFeature.pipe(
-        //     map(features => features.filter(feature => feature.projectId === projectId))
-        // )
+    GetFeaturesForProject(projectId: string) : Observable<Array<Feature>>  { 
+        return this.featureSubject.pipe(
+            map(features => features.filter(feature => feature.projectId === projectId))
+        )
     }
 
     DeleteFeature(featureId: string) {
@@ -137,11 +137,9 @@ export class FeaturesService {
     AddOrUpdateFeature(feature: Feature) {
         if(feature.id === "") {
             feature.id = crypto.randomUUID();
-            this.features.push(feature);
-            console.log("🚀 ~ file: features-service.ts:141 ~ FeaturesService ~ AddOrUpdateFeature ~ features:", this.features)
-            return;
         }
         this.DeleteFeature(feature.id)
         this.features.push(feature);
+        this.featureSubject.next(this.features);
     }
 }
