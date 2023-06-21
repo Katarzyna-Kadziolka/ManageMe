@@ -1,3 +1,4 @@
+import { FeaturesService } from './../../services/features-service';
 import { Priority } from 'src/models/priority';
 import { Feature } from './../../models/feature';
 import { Component, Input } from '@angular/core';
@@ -7,7 +8,8 @@ import { BorderColor } from 'src/models/border-color';
 @Component({
   selector: 'app-feature',
   templateUrl: './feature.component.html',
-  styleUrls: ['./feature.component.scss']
+  styleUrls: ['./feature.component.scss'],
+  providers: [FeaturesService]
 })
 export class FeatureComponent {
   @Input () feature: Feature = {
@@ -21,5 +23,11 @@ export class FeatureComponent {
     tasks: []
   }
 
+  constructor(private featureService: FeaturesService ) {}
+
   borderColor = BorderColor.Orange;
+
+  onDelete() {
+    this.featureService.DeleteFeature(this.feature.id);
+  }
 }

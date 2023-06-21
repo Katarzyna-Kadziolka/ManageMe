@@ -8,10 +8,10 @@ import { of, startWith, Observable, filter, map } from 'rxjs';
 @Injectable()
 export class FeaturesService {
     features: Array<Feature> = [];
+    tasksServices = new FeatureTasksService();
     //observableFeature: Observable<Array<Feature>>;
 
     constructor() {
-        const tasksServices = new FeatureTasksService();
         this.features = [
             {
                 id: "10ec918f-60fd-404f-8d0b-82be46e71eb9",
@@ -108,7 +108,7 @@ export class FeaturesService {
             // tasksServices.getTasksForFeature(feature.id).subscribe(
             //     tasks => feature.tasks = tasks
             // )
-            feature.tasks = tasksServices.getTasksForFeature(feature.id);
+            feature.tasks = this.tasksServices.getTasksForFeature(feature.id);
         });
         // this.observableFeature = of(this.features).pipe(
         //     startWith(this.features)
@@ -120,5 +120,17 @@ export class FeaturesService {
         // return this.observableFeature.pipe(
         //     map(features => features.filter(feature => feature.projectId === projectId))
         // )
+    }
+
+    DeleteFeature(featureId: string) {
+        const index = this.features.findIndex((a) => a.id === featureId);
+        if(index > -1) {
+            const tasks = this.features[index].tasks;
+            this.features.splice(index, 1);
+            tasks.forEach(task => {
+                this.tasksServices.removeTask(task.name)
+            });
+        }
+        
     }
 }
