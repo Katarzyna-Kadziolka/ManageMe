@@ -19,10 +19,26 @@ button {
     font-family: 'Calibri';
     font-weight: bold;
     color: #404240;
-    min-width: 4rem;
+    min-width: 5rem;
     min-height: 2rem;
     border: 3px solid #EE9802;
     border-radius: 25px;
-    background-color: #F2CD4E;
+    background-color: #EE9802;
     cursor: pointer;
+    &:hover {
+        animation-name: hover-button;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes hover-button {
+    from {
+        border: 3px solid #EE9802;
+        background-color: #EE9802;
+    }
+    to {
+        background-color: #F2CD4E;
+        border: 3px solid #F2CD4E;
+    }
 }

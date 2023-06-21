@@ -11,7 +11,10 @@
     </div>
 
     <app-task *ngFor="let task of this.feature.tasks" [task]="task" class="task" /> 
-    <app-management-buttons (delete)="onDelete()" />
+    <div class="add-button-container">
+        <button>Add task</button>  
+        <app-management-buttons (delete)="onDelete()" />
+    </div>
 </app-openable-card>
 
 
