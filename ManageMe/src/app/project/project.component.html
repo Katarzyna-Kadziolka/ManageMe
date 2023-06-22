@@ -3,7 +3,8 @@
 <hr>
 <span class="features">Features</span>
 <app-feature *ngFor="let feature of projectDetails.features" [feature]="feature" />
-<app-feature-form />
+<ng-container #featureFormContainer></ng-container>
+
 <div class="button-container">
-    <button class="add-feature-button">Add feature</button>
+    <button class="add-feature-button" (click)="createFeatureForm()">Add feature</button>
 </div>

@@ -1,9 +1,13 @@
+import { Feature } from './../../models/feature';
+import { FeatureFormComponent } from './../feature-form/feature-form.component'
 import { FeaturesService } from './../../services/features-service';
 import { ProjectsService } from './../../services/projects-service';
 import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Priority } from 'src/models/priority';
+import { Status } from 'src/models/status';
 
 @Component({
   selector: 'app-project',
@@ -21,7 +25,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
   private projectsSubscription: Subscription | undefined;
 
-  constructor(private readonly route: ActivatedRoute, private projectsService: ProjectsService, private featureService: FeaturesService) {}
+  constructor(private readonly route: ActivatedRoute, private projectsService: ProjectsService, private featureService: FeaturesService,) {}
 
   ngOnInit(): void {
     let projectId = "";
@@ -51,6 +55,12 @@ export class ProjectComponent implements OnInit, OnDestroy {
     if (this.projectsSubscription) {
       this.projectsSubscription.unsubscribe();
     }
+  }
+
+  @ViewChild('featureFormContainer', {read: ViewContainerRef}) featureFormContainer!: ViewContainerRef;
+  
+  createFeatureForm() {
+    this.featureFormContainer.createComponent(FeatureFormComponent);
   }
 
 }
