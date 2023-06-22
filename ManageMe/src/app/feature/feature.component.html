@@ -11,7 +11,7 @@
     </div>
 
     <app-task *ngFor="let task of this.feature.tasks" [task]="task" class="task" /> 
-    <!-- <app-task-form /> -->
+    <app-task-form />
     <div class="add-button-container">
         <button>Add task</button>  
         <app-management-buttons (delete)="onDelete()" (edit)="onEdit()" />

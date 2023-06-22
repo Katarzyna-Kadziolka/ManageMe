@@ -9,11 +9,6 @@
     box-shadow: 0px 17px 29px -10px rgba(180, 181, 192, 1);
 }
 
-.owner-container {
-    display: flex;
-    column-gap: 0.5rem;
-}
-
 .description {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -47,4 +42,27 @@ hr {
 
 .save-button {
     width: 150px;
+}
+
+.task-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+}
+
+.dates {
+    justify-self: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+}
+
+.date-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user {
+    align-self: flex-end;
 }
