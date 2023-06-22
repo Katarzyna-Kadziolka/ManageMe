@@ -22,4 +22,5 @@
     <div class="description">
        <span>{{task.description}}</span> 
     </div>
+    <app-management-buttons (delete)="onDelete()" (edit)="onEdit()" />
 </app-openable-card>

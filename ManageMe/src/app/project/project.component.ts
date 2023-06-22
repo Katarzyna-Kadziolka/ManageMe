@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
     })
   }
 
-  onEditfeature(feature: Feature) {
+  onEditFeature(feature: Feature) {
     this.featureService.DeleteFeature(feature.id);
     const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
     featureForm.setInput('feature', feature);

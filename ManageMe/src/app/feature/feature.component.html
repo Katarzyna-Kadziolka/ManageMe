@@ -10,10 +10,10 @@
         <span >{{feature.description}}</span>
     </div>
 
-    <app-task *ngFor="let task of this.feature.tasks" [task]="task" class="task" /> 
-    <app-task-form />
+    <app-task *ngFor="let task of this.feature.tasks" [task]="task" class="task" (onEditTask)="onEditTask($event)" /> 
+    <ng-container #taskFormContainer></ng-container>
     <div class="add-button-container">
-        <button>Add task</button>  
+        <button (click)="createTaskForm()">Add task</button>  
         <app-management-buttons (delete)="onDelete()" (edit)="onEdit()" />
     </div>
 </app-openable-card>
