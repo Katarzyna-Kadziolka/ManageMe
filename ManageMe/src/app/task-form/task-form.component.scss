@@ -1,6 +1,7 @@
 :host {
     padding: 1rem;
-    border: 3px solid #FAE8B2 ;
+    margin-bottom: 1rem;
+    border: 3px solid #9E9E9E ;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -47,7 +48,6 @@ hr {
 .task-data {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 1rem;
 }
 
 .dates {
@@ -61,6 +61,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    row-gap: 0.5rem;
 }
 
 .user {

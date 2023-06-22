@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-form.component.scss']
 })
 export class TaskFormComponent {
-
+  
 }
