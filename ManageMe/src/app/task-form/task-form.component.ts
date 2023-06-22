@@ -1,35 +1,40 @@
-import { FeatureTasksService } from './../../services/feature-tasks-service';
-import { User } from './../../models/user';
 import { UsersService } from './../../services/users-service';
-import { BorderColor } from './../../models/border-color';
-import { Priority } from 'src/models/priority';
 import { FeatureTask } from './../../models/feature-task';
 import { Component, Input } from '@angular/core';
-import { Status } from 'src/models/status';
 import { Permishion } from 'src/models/permishion';
+import { Priority } from 'src/models/priority';
+import { Status } from 'src/models/status';
+import { User } from 'src/models/user';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.scss'],
+  selector: 'app-task-form',
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.scss']
 })
-export class TaskComponent {
+export class TaskFormComponent {
   @Input () task: FeatureTask = {
     name: "",
-    addDate: new Date(),
     description: "",
-    endDate: new Date(),
-    expectedExecutionTime: new Date(),
-    featureId: "",
     priority: Priority.Must,
-    startDate: new Date(),
+    featureId: "",
+    expectedExecutionTime: new Date(),
     status: Status.Todo,
+    addDate: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
     userId: ""
   }
 
-  constructor(private usersService: UsersService, private featureTasksService: FeatureTasksService) {}
+  constructor(private usersService: UsersService) {}
 
-  borderColor = BorderColor.Grey;
+  priorityChanged(event: Priority) {
+    this.task.priority = event;
+  }
+
+  statusChanged(event: Status) {
+    this.task.status = event;
+  }
+
   user : User = {
     id: "",
     lastName: "",
@@ -51,9 +56,4 @@ export class TaskComponent {
   toDate(time: Date) : string {
     return `${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`;
   }
-
-  onDelete() {
-    this.featureTasksService.DeleteTask(this.task.name);
-  }
-
 }

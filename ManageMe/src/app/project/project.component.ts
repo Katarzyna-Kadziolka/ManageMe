@@ -4,16 +4,12 @@ import { FeaturesService } from './../../services/features-service';
 import { ProjectsService } from './../../services/projects-service';
 import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Priority } from 'src/models/priority';
-import { Status } from 'src/models/status';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
-  providers: [ProjectsService]
 })
 export class ProjectComponent implements OnInit {
   projectDetails: ProjectDetails = {

@@ -6,7 +6,6 @@ import { ProjectsService } from './../../services/projects-service'
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
-  providers: [ProjectsService]
 })
 export class ProjectsComponent {
 

@@ -4,7 +4,9 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Project } from './../models/project';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ProjectsService {
     projects: Array<Project> = [];
     private projectsSubject: BehaviorSubject<Array<Project>> = new BehaviorSubject<Array<Project>>([]);

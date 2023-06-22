@@ -1,6 +1,6 @@
 // :host {
 //     padding: 1rem;
-//     border: 3px solid #FAE8B2 ;
+//     border: 3px solid #9E9E9E ;
 //     border-radius: 20px;
 //     display: flex;
 //     flex-direction: column;
@@ -9,7 +9,7 @@
 //     box-shadow: 0px 17px 29px -10px rgba(180, 181, 192, 1);
 // }
 
-// .owner-container {
+// .user-container {
 //     display: flex;
 //     column-gap: 0.5rem;
 // }
@@ -47,4 +47,23 @@
 
 // .save-button {
 //     width: 150px;
+// }
+
+// .task-data {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     padding: 1rem;
+// }
+
+// .dates {
+//     justify-self: end;
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     column-gap: 0.5rem;
+// }
+
+// .date-column {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
 // }
