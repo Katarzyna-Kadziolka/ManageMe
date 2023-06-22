@@ -45,6 +45,7 @@ export class FeatureComponent {
     taskForm.setInput('featureId', this.feature.id);
     const subscription = taskForm.instance.onSaved.subscribe(() => {
       taskForm.destroy();
+      this.changeStatus();
       subscription.unsubscribe();
     })
   }
@@ -54,9 +55,20 @@ export class FeatureComponent {
     const taskForm = this.taskFormContainer.createComponent(TaskFormComponent);
     taskForm.setInput('featureId', this.feature.id);
     taskForm.setInput('task', task);
+
     const subscription = taskForm.instance.onSaved.subscribe(() => {
       taskForm.destroy();
+      this.changeStatus();
       subscription.unsubscribe();
     })
+  }
+
+  changeStatus() {
+    if(this.feature.tasks.some((a) => a.status !== Status.Todo)) {
+      this.feature.status = Status.Doing;
+    }
+    if(this.feature.tasks.every((a) => a.status === Status.Done)) {
+      this.feature.status = Status.Done;
+    }
   }
 }
