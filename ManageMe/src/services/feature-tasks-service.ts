@@ -2,12 +2,15 @@ import { FeatureTask } from './../models/feature-task';
 import { Injectable } from "@angular/core";
 import { Status } from "./../models/status";
 import { Priority } from "./../models/priority";
-import { of, startWith, Observable, filter, mergeMap, map } from 'rxjs';
+import { of, startWith, Observable, filter, mergeMap, map, ReplaySubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FeatureTasksService {
-    tasks: Array<FeatureTask> = [];
-    //observableTasks: Observable<Array<FeatureTask>>;
+    private tasks: Array<FeatureTask> = [];
+    private taskSubject: ReplaySubject<Array<FeatureTask>>;
+    tasksObservable: Observable<Array<FeatureTask>>;
 
     constructor() {
         this.tasks = [
@@ -228,20 +231,28 @@ export class FeatureTasksService {
                 userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
         ];
-        //this.observableTasks = of(this.tasks).pipe(startWith(this.tasks));
+        this.taskSubject = new ReplaySubject<Array<FeatureTask>>();
+        this.taskSubject.next(this.tasks);
+        this.tasksObservable = this.taskSubject;
     }
 
-    getTasksForFeature(featureId: string) : Array<FeatureTask> {
-        // return this.observableTasks.pipe(
-        //     map(tasks => tasks.filter(task => task.featureId === featureId))
-        //   );
-        return this.tasks.filter(task => task.featureId === featureId);
+    GetTasksForFeature(featureId: string) : Observable<Array<FeatureTask>> {
+        return this.tasksObservable.pipe(
+            map(tasks => tasks.filter(task => task.featureId === featureId))
+          );
     }
 
-    removeTask(taskName: string) {
+    DeleteTask(taskName: string) {
         const index = this.tasks.findIndex((a) => a.name === taskName);
         if(index > -1) {
             this.tasks.splice(index, 1);
         }
+        this.taskSubject.next(this.tasks);
+    }
+
+    AddOrUpdateTask(task: FeatureTask) {
+        this.DeleteTask(task.name);
+        this.tasks.push(task);
+        this.taskSubject.next(this.tasks);
     }
 }

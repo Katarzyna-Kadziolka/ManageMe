@@ -12,7 +12,7 @@ import { Permishion } from 'src/models/permishion';
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
-  providers: [UsersService, FeatureTasksService]
+  providers: [UsersService]
 })
 export class TaskComponent {
   @Input () task: FeatureTask = {
@@ -54,7 +54,7 @@ export class TaskComponent {
   }
 
   onDelete() {
-    this.featureTasksService.removeTask(this.task.name);
+    this.featureTasksService.DeleteTask(this.task.name);
   }
 
 }

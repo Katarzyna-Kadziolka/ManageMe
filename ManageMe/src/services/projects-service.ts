@@ -1,6 +1,4 @@
 import { BehaviorSubject, Observable, of, startWith } from 'rxjs';
-import { FeaturesService } from './features-service';
-import { ProjectDetails } from './../models/project-details';
 import { Injectable } from '@angular/core';
 import { Project } from './../models/project';
 

@@ -13,9 +13,7 @@ export class FeaturesService {
     private featureSubject: ReplaySubject<Array<Feature>>
     featuresObservable: Observable<Array<Feature>>
 
-    tasksServices = new FeatureTasksService();
-
-    constructor() {
+    constructor(private tasksServices: FeatureTasksService ) {
         this.features = [
             {
                 id: "10ec918f-60fd-404f-8d0b-82be46e71eb9",
@@ -109,7 +107,9 @@ export class FeaturesService {
             },
         ]
         this.features.forEach(feature => {
-            feature.tasks = this.tasksServices.getTasksForFeature(feature.id);
+            tasksServices.GetTasksForFeature(feature.id).subscribe(
+                t => feature.tasks = t
+            )
         });
         this.featureSubject = new ReplaySubject<Array<Feature>>();
         this.featureSubject.next(this.features);
@@ -128,7 +128,7 @@ export class FeaturesService {
             const tasks = this.features[index].tasks;
             this.features.splice(index, 1);
             tasks.forEach(task => {
-                this.tasksServices.removeTask(task.name)
+                this.tasksServices.DeleteTask(task.name)
             });
         }
         this.featureSubject.next(this.features);
@@ -138,7 +138,7 @@ export class FeaturesService {
         if(feature.id === "") {
             feature.id = crypto.randomUUID();
         }
-        this.DeleteFeature(feature.id)
+        this.DeleteFeature(feature.id);
         this.features.push(feature);
         this.featureSubject.next(this.features);
     }
