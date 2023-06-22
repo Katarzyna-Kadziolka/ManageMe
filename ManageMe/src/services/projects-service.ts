@@ -1,4 +1,6 @@
-import { BehaviorSubject, Observable, of, startWith } from 'rxjs';
+import { ProjectDetails } from './../models/project-details';
+import { FeaturesService } from './features-service';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Project } from './../models/project';
 
@@ -8,7 +10,7 @@ export class ProjectsService {
     private projectsSubject: BehaviorSubject<Array<Project>> = new BehaviorSubject<Array<Project>>([]);
     projectsObservable: Observable<Array<Project>> = this.projectsSubject.asObservable();
 
-    constructor() {
+    constructor(private featureService: FeaturesService) {
         this.projects = [
             {
                 id: "f9614e22-0418-4acf-90ad-af73e715f87e",
@@ -38,5 +40,32 @@ export class ProjectsService {
         const project = this.projects.find((a) => a.id === id);
         if (project === undefined) throw new Error('Project not found');
         return of(project);
-      }
+    }
+
+    GetProjectDetails(projectId: string): Observable<ProjectDetails> {
+        let project : Project = {
+            id: "",
+            name: "",
+            description: "",
+        }
+
+        this.GetProject(projectId).subscribe(
+            p => project = p
+        );
+
+        const projectDetails : ProjectDetails = {
+            id: project.id,
+            name: project.name,
+            description: project.description,
+            features: []
+        }
+
+        this.featureService.GetFeaturesForProject(project.id).subscribe(
+            updatedList => {
+              projectDetails.features = updatedList;
+            }
+        )
+
+        return of(projectDetails);
+    }
 }

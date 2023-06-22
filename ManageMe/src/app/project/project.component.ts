@@ -15,7 +15,7 @@ import { Status } from 'src/models/status';
   styleUrls: ['./project.component.scss'],
   providers: [ProjectsService]
 })
-export class ProjectComponent implements OnInit, OnDestroy {
+export class ProjectComponent implements OnInit {
   projectDetails: ProjectDetails = {
     id: '',
     name: '',
@@ -23,38 +23,16 @@ export class ProjectComponent implements OnInit, OnDestroy {
     features: []
   }
 
-  private projectsSubscription: Subscription | undefined;
-
   constructor(private readonly route: ActivatedRoute, private projectsService: ProjectsService, private featureService: FeaturesService,) {}
 
   ngOnInit(): void {
     let projectId = "";
-    let project = {
-      id: '',
-      name: '',
-      description: '',
-    }
     this.route.params.subscribe(data => {
       projectId =  data['id']
-      this.projectsService.GetProject(projectId).subscribe(
-        p => project = p
+      this.projectsService.GetProjectDetails(projectId).subscribe(
+        p => this.projectDetails = p
       )
     })
-    
-    this.projectDetails.id = project.id;
-    this.projectDetails.name = project.name;
-    this.projectDetails.description = project.description;
-    this.projectsSubscription = this.featureService.GetFeaturesForProject(projectId).subscribe(
-      updatedList => {
-        this.projectDetails.features = updatedList;
-      }
-    )
-  }
-
-  ngOnDestroy(): void {
-    if (this.projectsSubscription) {
-      this.projectsSubscription.unsubscribe();
-    }
   }
 
   @ViewChild('featureFormContainer', {read: ViewContainerRef}) featureFormContainer!: ViewContainerRef;
