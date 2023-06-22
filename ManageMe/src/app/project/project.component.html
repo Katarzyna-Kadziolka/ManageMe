@@ -2,7 +2,7 @@
 <span class="project-description">{{ projectDetails.description }}</span>
 <hr>
 <span class="features">Features</span>
-<app-feature *ngFor="let feature of projectDetails.features" [feature]="feature" />
+<app-feature *ngFor="let feature of projectDetails.features" [feature]="feature" (onEditFeature)="onEditfeature($event)" />
 <ng-container #featureFormContainer></ng-container>
 
 <div class="button-container">

@@ -63,4 +63,11 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.featureFormContainer.createComponent(FeatureFormComponent);
   }
 
+  onEditfeature(feature: Feature) {
+    console.log("🚀 ~ file: project.component.ts:67 ~ ProjectComponent ~ onEditfeature ~ feature:", feature)
+    
+    const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
+    featureForm.setInput('feature', feature);
+  }
+
 }

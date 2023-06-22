@@ -7,7 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ManagementButtonsComponent {
   @Output() delete = new EventEmitter();
-  onDelete(event: any) {
-    this.delete.emit(event);
+  onDelete() {
+    this.delete.emit();
+  }
+
+  @Output() edit = new EventEmitter();
+  onEdit() {
+    this.edit.emit();
   }
 }

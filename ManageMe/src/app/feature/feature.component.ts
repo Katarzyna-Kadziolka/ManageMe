@@ -1,7 +1,7 @@
 import { FeaturesService } from './../../services/features-service';
 import { Priority } from 'src/models/priority';
 import { Feature } from './../../models/feature';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Status } from 'src/models/status';
 import { BorderColor } from 'src/models/border-color';
 
@@ -28,5 +28,10 @@ export class FeatureComponent {
 
   onDelete() {
     this.featureService.DeleteFeature(this.feature.id);
+  }
+
+  @Output () onEditFeature = new EventEmitter();
+  onEdit() {    
+    this.onEditFeature.emit(this.feature);
   }
 }
