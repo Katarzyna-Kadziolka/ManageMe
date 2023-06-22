@@ -11,5 +11,5 @@ export type FeatureTask = {
     addDate: Date,
     startDate: Date,
     endDate: Date,
-    userId: string
+    userName: string
 }

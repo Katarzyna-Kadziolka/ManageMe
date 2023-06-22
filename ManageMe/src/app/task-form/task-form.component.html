@@ -1,32 +1,34 @@
-<div class="title-bar">
-    <input placeholder="Task name">
+<div class="title-bar" [formGroup]="changedTask">
+    <input placeholder="Task name" formControlName="name">
     <div class="title-info">
-        <app-tags-management />
+        <app-tags-management (priorityChanged)="priorityChanged($event)" (statusChanged)="statusChanged($event)" />
     </div>    
 </div>
 <hr>
-<div class="task-data">
+<div class="task-data" [formGroup]="changedTask">
     <div class="user">
-        <input placeholder="User" >
+        <input placeholder="User" formControlName="userName">
     </div>
     <div class="dates">
         <div class="date-column">
            <span><b>Addition date:</b></span>
            <span><b>Start date:</b></span>
+           <span><b>Expected date:</b></span>
            <span><b>End date:</b></span>
         </div>
         <div class="date-column">
-            <input type="date">
-            <input type="date" >
-            <input type="date" >
+            <input type="date" formControlName="addDate">
+            <input type="date" formControlName="startDate">
+            <input type="date" formControlName="expectedExecutionTime">
+            <input type="date" formControlName="endDate">
         </div>
     </div>
 </div>
-<div class="description">
-    <textarea placeholder="Description" class="description-area"></textarea>
+<div class="description" [formGroup]="changedTask">
+    <textarea placeholder="Description" class="description-area" formControlName="description"></textarea>
 </div>
     
 <div class="save-button-container">
-   <button class="save-button" >Save</button> 
+   <button class="save-button" (click)="onSave()" >Save</button> 
 </div>
 

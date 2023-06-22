@@ -24,7 +24,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-18"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Implementation of task notifications",
@@ -36,7 +36,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Implementation of adding tasks and events to the calendar",
@@ -48,7 +48,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Display of task schedule for selected period ",
@@ -60,7 +60,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Creation of projects and assignment of tasks",
@@ -72,7 +72,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Project progress monitoring and task management",
@@ -84,7 +84,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Adding new books to the library",
@@ -96,7 +96,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-18"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Library management and book marking",
@@ -108,7 +108,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Searching for books in the library",
@@ -120,7 +120,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-18"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Management of book loans and notifications of return dates",
@@ -132,7 +132,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Adding reviews and ratings to books",
@@ -144,7 +144,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Viewing other users' reviews and receiving recommendations",
@@ -156,7 +156,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Calculation of the length of wire needed to make a chain",
@@ -168,7 +168,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-18"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Calculation of wire weight based on given parameters",
@@ -180,7 +180,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Display of information on available materials",
@@ -192,7 +192,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Editing and updating material information",
@@ -204,7 +204,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date(),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Comparing the properties of different materials",
@@ -216,7 +216,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-18"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
             {
                 name: "Generation of comparison charts",
@@ -228,7 +228,7 @@ export class FeatureTasksService {
                 addDate: new Date("2023-06-12"),
                 endDate: new Date("2023-06-20"),
                 startDate: new Date("2023-06-15"),
-                userId: "79877259-2198-4a10-9cfa-5445a200e9e1"
+                userName: "79877259-2198-4a10-9cfa-5445a200e9e1"
             },
         ];
         this.taskSubject = new ReplaySubject<Array<FeatureTask>>();

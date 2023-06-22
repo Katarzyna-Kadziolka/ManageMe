@@ -24,7 +24,7 @@ export class TaskComponent {
     priority: Priority.Must,
     startDate: new Date(),
     status: Status.Todo,
-    userId: ""
+    userName: ""
   }
 
   constructor(private usersService: UsersService, private featureTasksService: FeatureTasksService) {}
@@ -45,7 +45,7 @@ export class TaskComponent {
 
 
   ngOnInit(): void {
-    this.user = this.usersService.GetUserById(this.task.userId);
+    this.user = this.usersService.GetUserById(this.task.userName);
   }
 
   toDate(time: Date) : string {
