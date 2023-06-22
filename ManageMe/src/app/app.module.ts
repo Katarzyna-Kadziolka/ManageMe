@@ -22,7 +22,6 @@ import { OpenableCardComponent } from './openable-card/openable-card.component';
 import { ManagementButtonsComponent } from './management-buttons/management-buttons.component';
 import { FeatureFormComponent } from './feature-form/feature-form.component';
 import { TagsManagementComponent } from './tags-management/tags-management.component';
-import { TaskFormComponent } from './task-form/task-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { TaskFormComponent } from './task-form/task-form.component';
     ManagementButtonsComponent,
     FeatureFormComponent,
     TagsManagementComponent,
-    TaskFormComponent
   ],
   imports: [
     BrowserModule,
