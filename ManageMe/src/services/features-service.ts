@@ -3,7 +3,7 @@ import { Feature } from './../models/feature';
 import { Injectable } from "@angular/core";
 import { Status } from "./../models/status";
 import { Priority } from "./../models/priority";
-import { of, startWith, Observable, filter, map, BehaviorSubject, Subject, ReplaySubject } from 'rxjs';
+import { Observable, map, ReplaySubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -131,7 +131,7 @@ export class FeaturesService {
                 this.tasksServices.removeTask(task.name)
             });
         }
-        
+        this.featureSubject.next(this.features);
     }
 
     AddOrUpdateFeature(feature: Feature) {

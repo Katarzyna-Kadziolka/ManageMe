@@ -49,6 +49,7 @@ export class FeatureFormComponent implements OnInit {
     }
 
     this.featureService.AddOrUpdateFeature(feature);
+
   }
 
   getProjectId() {

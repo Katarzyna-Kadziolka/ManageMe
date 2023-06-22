@@ -3,7 +3,7 @@ import { ProjectsService } from './../../services/projects-service';
 import { ProjectDetails } from './../../models/project-details';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project',
@@ -40,21 +40,11 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.projectDetails.id = project.id;
     this.projectDetails.name = project.name;
     this.projectDetails.description = project.description;
-    this.projectsSubscription = this.featureService.featuresObservable.pipe(
-          map(ff => ff.filter(f => f.projectId === projectId))
-      ).subscribe(
-        updatedList => {
-          console.log("🚀 ~ file: project.component.ts:51 ~ ProjectComponent ~ ngOnInit ~ updatedList:", updatedList)
-          this.projectDetails.features = updatedList;
-        }
-      );
-    // this.projectsSubscription = this.featureService.GetFeaturesForProject(projectId).subscribe(
-    //   updatedList => {
-    //     console.log("🚀 ~ file: project.component.ts:51 ~ ProjectComponent ~ ngOnInit ~ updatedList:", updatedList)
-    //     this.projectDetails.features = updatedList;
-    //   }
-    // )
-
+    this.projectsSubscription = this.featureService.GetFeaturesForProject(projectId).subscribe(
+      updatedList => {
+        this.projectDetails.features = updatedList;
+      }
+    )
   }
 
   ngOnDestroy(): void {

@@ -9,7 +9,6 @@ import { BorderColor } from 'src/models/border-color';
   selector: 'app-feature',
   templateUrl: './feature.component.html',
   styleUrls: ['./feature.component.scss'],
-  providers: [FeaturesService]
 })
 export class FeatureComponent {
   @Input () feature: Feature = {
