@@ -58,16 +58,23 @@ export class ProjectComponent implements OnInit, OnDestroy {
   }
 
   @ViewChild('featureFormContainer', {read: ViewContainerRef}) featureFormContainer!: ViewContainerRef;
-  
+
   createFeatureForm() {
-    this.featureFormContainer.createComponent(FeatureFormComponent);
+    const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
+    const subscription = featureForm.instance.onSaved.subscribe(() => {
+      featureForm.destroy();
+      subscription.unsubscribe();
+    })
   }
 
   onEditfeature(feature: Feature) {
-    console.log("🚀 ~ file: project.component.ts:67 ~ ProjectComponent ~ onEditfeature ~ feature:", feature)
-    
+    this.featureService.DeleteFeature(feature.id);
     const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
     featureForm.setInput('feature', feature);
+    const subscription = featureForm.instance.onSaved.subscribe(() => {
+      featureForm.destroy();
+      subscription.unsubscribe();
+    })
   }
 
 }

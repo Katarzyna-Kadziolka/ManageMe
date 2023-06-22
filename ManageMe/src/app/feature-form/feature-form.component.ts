@@ -1,6 +1,6 @@
 import { FeaturesService } from './../../services/features-service';
 import { Feature } from './../../models/feature';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Priority } from 'src/models/priority';
 import { Status } from 'src/models/status';
@@ -36,6 +36,7 @@ export class FeatureFormComponent implements OnInit {
       })
   }
 
+  @Output () onSaved = new EventEmitter();
   onSave() {
     const feature : Feature = {
       id: this.feature.id,
@@ -49,7 +50,7 @@ export class FeatureFormComponent implements OnInit {
     }
 
     this.featureService.AddOrUpdateFeature(feature);
-
+    this.onSaved.emit();
   }
 
   getProjectId() {
