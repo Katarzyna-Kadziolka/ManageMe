@@ -19,11 +19,11 @@ export class TaskFormComponent implements OnInit {
     description: "",
     priority: Priority.Must,
     featureId: "",
-    expectedExecutionTime: new Date(),
+    expectedExecutionTime: "",
     status: Status.Todo,
-    addDate: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
+    addDate: "",
+    startDate: "",
+    endDate: "",
     userName: ""
   }
 
@@ -46,15 +46,15 @@ export class TaskFormComponent implements OnInit {
   @Output () onSaved = new EventEmitter();
   onSave() {
     const task : FeatureTask = {
-      name: this.task.name,
-      description: this.task.description,
-      addDate: this.task.addDate,
-      endDate: this.task.endDate,
-      expectedExecutionTime: this.task.expectedExecutionTime,
+      name: this.changedTask.controls.name.value,
+      description: this.changedTask.controls.description.value,
+      addDate: this.changedTask.controls.addDate.value,
+      endDate: this.changedTask.controls.endDate.value,
+      expectedExecutionTime: this.changedTask.controls.expectedExecutionTime.value,
       priority: this.task.priority,
-      startDate: this.task.startDate,
+      startDate: this.changedTask.controls.startDate.value,
       status: this.task.status,
-      userName: this.task.userName,
+      userName: this.changedTask.controls.userName.value,
       featureId: this.featureId
     }
 

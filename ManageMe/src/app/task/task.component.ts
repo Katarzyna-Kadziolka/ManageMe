@@ -16,13 +16,13 @@ import { Permishion } from 'src/models/permishion';
 export class TaskComponent {
   @Input () task: FeatureTask = {
     name: "",
-    addDate: new Date(),
+    addDate: "",
     description: "",
-    endDate: new Date(),
-    expectedExecutionTime: new Date(),
+    endDate: "",
+    expectedExecutionTime: "",
     featureId: "",
     priority: Priority.Must,
-    startDate: new Date(),
+    startDate: "",
     status: Status.Todo,
     userName: ""
   }
@@ -31,7 +31,6 @@ export class TaskComponent {
 
   borderColor = BorderColor.Grey;
   user : User = {
-    id: "",
     lastName: "",
     name: "",
     login: "",
@@ -45,11 +44,7 @@ export class TaskComponent {
 
 
   ngOnInit(): void {
-    this.user = this.usersService.GetUserById(this.task.userName);
-  }
-
-  toDate(time: Date) : string {
-    return `${time.getDate()}.${time.getMonth()}.${time.getFullYear()}`;
+    this.user = this.usersService.GetUserByName(this.task.userName);
   }
 
   onDelete() {

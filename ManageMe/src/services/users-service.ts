@@ -11,7 +11,6 @@ export class UsersService {
     constructor() {
         this.users = [
             {
-                id: "79877259-2198-4a10-9cfa-5445a200e9e1",
                 name: "Aubrey",
                 lastName: "Taylor",
                 login: "dev",
@@ -19,7 +18,6 @@ export class UsersService {
                 permishion: Permishion.Developer
             },
             {
-                id: "79877259-2198-4a10-9cfa-5445a200e9e1",
                 name: "Lauryn",
                 lastName: "Davies",
                 login: "devops",
@@ -27,7 +25,6 @@ export class UsersService {
                 permishion: Permishion.Devops
             },
             {
-                id: "79877259-2198-4a10-9cfa-5445a200e9e1",
                 name: "Maren",
                 lastName: "Evans",
                 login: "admin",
@@ -37,9 +34,18 @@ export class UsersService {
         ]
     }
 
-    GetUserById(id: string): User {
-        const user = this.users.find((a) => a.id === id);
-        if(user === undefined) throw Error;
+    GetUserByName(name: string): User {
+        let user = this.users.find((a) => a.name === name);
+        if(user === undefined) {
+            const newUser: User = {
+                name: name,
+                lastName: "",
+                login: "",
+                password: "",
+                permishion: Permishion.Developer
+            }
+            user = newUser;
+        };
         return user;
     }
 }

@@ -6,10 +6,10 @@ export type FeatureTask = {
     description: string,
     priority: Priority,
     featureId: string,
-    expectedExecutionTime: Date,
+    expectedExecutionTime: string,
     status: Status,
-    addDate: Date,
-    startDate: Date,
-    endDate: Date,
+    addDate: string,
+    startDate: string,
+    endDate: string,
     userName: string
 }
