@@ -36,8 +36,8 @@ export class ProjectComponent implements OnInit {
   createFeatureForm() {
     const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
     const subscription = featureForm.instance.onSaved.subscribe(() => {
-      featureForm.destroy();
       subscription.unsubscribe();
+      featureForm.destroy();
     })
   }
 
@@ -46,8 +46,8 @@ export class ProjectComponent implements OnInit {
     const featureForm = this.featureFormContainer.createComponent(FeatureFormComponent);
     featureForm.setInput('feature', feature);
     const subscription = featureForm.instance.onSaved.subscribe(() => {
-      featureForm.destroy();
       subscription.unsubscribe();
+      featureForm.destroy();
     })
   }
 

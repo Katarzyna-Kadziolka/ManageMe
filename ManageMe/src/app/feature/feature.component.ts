@@ -44,9 +44,10 @@ export class FeatureComponent {
     const taskForm = this.taskFormContainer.createComponent(TaskFormComponent);
     taskForm.setInput('featureId', this.feature.id);
     const subscription = taskForm.instance.onSaved.subscribe(() => {
-      taskForm.destroy();
       this.changeStatus();
+      console.log(this.feature)
       subscription.unsubscribe();
+      taskForm.destroy();
     })
   }
 

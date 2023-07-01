@@ -139,6 +139,9 @@ export class FeaturesService {
             feature.id = crypto.randomUUID();
         }
         this.DeleteFeature(feature.id);
+        this.tasksServices.GetTasksForFeature(feature.id).subscribe(
+            t => feature.tasks = t
+        )
         this.features.push(feature);
         this.featureSubject.next(this.features);
     }

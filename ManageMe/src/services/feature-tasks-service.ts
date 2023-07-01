@@ -246,11 +246,12 @@ export class FeatureTasksService {
         const index = this.tasks.findIndex((a) => a.name === taskName);
         if(index > -1) {
             this.tasks.splice(index, 1);
+            this.taskSubject.next(this.tasks);
         }
-        this.taskSubject.next(this.tasks);
     }
 
     AddOrUpdateTask(task: FeatureTask) {
+        console.log("🚀 ~ file: feature-tasks-service.ts:254 ~ FeatureTasksService ~ AddOrUpdateTask ~ task:", task)
         this.DeleteTask(task.name);
         
         this.tasks.push(task);
